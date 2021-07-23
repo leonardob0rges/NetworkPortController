@@ -1,4 +1,4 @@
-# Network Port Controller v1.0
+# Network Port Controller v1.1
 ### Developed by: [@leonardob0rges](https://github.com/leonardob0rges)
    
 The ***Network Port Controller*** is a shellscript that uses Linux Firewall UFW, to set **rules** *as allow or deny determined ports*, and do certain things based on the option chosen:
