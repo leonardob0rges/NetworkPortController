@@ -117,6 +117,7 @@ then
     echo ""
     echo $'\e[0m\e[1;36m[\e[1;37m01\e[0m\e[0m\e[1;36m]\e[0m \e[0m\e[1;33minstall UFW\e[0m'
     echo $'\e[0m\e[1;36m[\e[1;37m02\e[0m\e[0m\e[1;36m]\e[0m \e[0m\e[1;33muninstall UFW\e[0m' 
+    echo $'\e[0m\e[1;36m[\e[1;37m03\e[0m\e[0m\e[1;36m]\e[0m \e[0m\e[1;33mdelete rule\e[0m'
     echo ""
     read -p $'\e[1;36m[*]\e[1m \e[1;37mChoose an option:\e[1m ' ufwOption
     
@@ -147,6 +148,14 @@ then
             echo $'\e[1;33mExiting ...\e[1m'
             exit 
         fi
+    fi
+    if [[ $ufwOption == 3 || $ufwOption == 03 ]];
+    then 
+        echo $'\e[1;37m\e[1m'
+        sudo ufw status numbered
+        echo ""
+        read -p $'\e[1;36m[*]\e[1m \e[1;37mWhich rule you want delete?: \e[1m' ruleOption
+        sudo ufw delete $ruleOption    
     fi
 elif [[ $option == 9 || $option == 09 ]];
 then 
