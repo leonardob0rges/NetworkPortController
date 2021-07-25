@@ -1,4 +1,4 @@
-# Network Port Controller v1.1
+# Network Port Controller
 ### Developed by: [@leonardob0rges](https://github.com/leonardob0rges)
    
 The ***Network Port Controller*** is a shellscript that uses Linux Firewall UFW, to set **rules** *as allow or deny determined ports*, and do certain things based on the option chosen:
@@ -34,7 +34,12 @@ cd NetworkPortController && chmod +x netportcontrol.sh
 ```
 You can run this program in bash, on several Linux distros, such as: **Ubuntu, Linux Mint, Arch Linux and Debian.**
 
-To run, type:
+To run, type this:
 ```
 bash netportcontrol.sh
+```
+
+Or this:
+```
+./netportcontrol.sh
 ```
