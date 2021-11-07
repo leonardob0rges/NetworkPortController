@@ -11,12 +11,13 @@ printf "\e[1;36m|_| \_|\___|\__|_|   \___/|_|   \__|  \____\___/|_| |_|\__|_|  \
 echo ""
 printf "    \e[1m\e[4;36mNetwork Port Controller coded by:  @leonardob0rges (GitHub)\e[0m\n"
 echo "" 
-printf "  \e[44m\e[1;37m The Network Port Controller is a simple shellscript\e[0m\n"
-printf "  \e[44m\e[1;37m that uses Linux Firewall UFW to defines rules as   \e[0m\n"
-printf "  \e[44m\e[1;37m allow or deny determined ports                     \e[0m\n"
+printf "  \e[1;37m The Network Port Controller is a simple shellscript\e[0m\n"
+printf "  \e[1;37m that uses Linux Firewall UFW to defines rules as   \e[0m\n"
+printf "  \e[1;37m allow or deny determined ports                     \e[0m\n"
 echo ""
 
 # USER'S CHOiCES
+sleep 0.2
 printf "\e[0m\e[1;36m[\e[1;37m01\e[0m\e[0m\e[1;36m]\e[0m \e[0m\e[1;33mallow PORT\e[0m     \e[0m\e[1;36m[\e[1;37m04\e[0m\e[0m\e[1;36m]\e[0m \e[0m\e[1;33menable UFW\e[0m     \e[0m\e[1;36m[\e[1;37m07\e[0m\e[0m\e[1;36m]\e[0m \e[0m\e[1;33mreset UFW\e[0m"
 echo ""
 printf "\e[0m\e[1;36m[\e[1;37m02\e[0m\e[0m\e[1;36m]\e[0m \e[0m\e[1;33mdeny PORT\e[0m      \e[0m\e[1;36m[\e[1;37m05\e[0m\e[0m\e[1;36m]\e[0m \e[0m\e[1;33mdisable UFW\e[0m    \e[0m\e[1;36m[\e[1;37m08\e[0m\e[0m\e[1;36m]\e[0m \e[0m\e[1;33m...\e[0m"
@@ -31,13 +32,17 @@ then
     echo ""
     read -p $'\e[1;36mPORT:\e[1m ' port
     read -p $'\e[1;36mPROTOCOL:\e[1m ' protocol
-    sudo ufw allow $port/$protocol 
+    sudo ufw allow $port/$protocol
+    sleep 2.15 
+    clear && ./netportcontrol.sh
 elif [[ $option == 2 || $option == 02 ]];
 then
     echo ""
     read -p $'\e[1;36mPORT:\e[1m ' port
     read -p $'\e[1;36mPROTOCOL:\e[1m ' protocol
-    sudo ufw deny $port/$protocol  
+    sudo ufw deny $port/$protocol 
+    sleep 2.15
+    clear && ./netportcontrol.sh 
 elif [[ $option == 3 || $option == 03 ]];
 then 
     echo ""
@@ -46,19 +51,51 @@ then
     echo $'\e[0m\e[1;36m[\e[1;37m03\e[0m\e[0m\e[1;36m]\e[0m \e[0m\e[1;33mstatus verbose\e[0m' 
     echo ""
     read -p $'\e[1;36m[*]\e[1m \e[1;37mChoose an option:\e[1m ' statusOption
-    
+   
     if [[ $statusOption == 1 || $statusOption == 01 ]];
     then
         echo ""
         sudo ufw status
+        read -s -p $'\e[1;36m Press <Enter> to return or Ctrl + c to exit\e[1m' finalOption
+        if [[ $finalOption = 'exit' || $finalOption = 'EXIT' || $finalOption = 'Exit' ]];
+        then
+            echo ""
+            exit
+        else
+            sleep 0
+            clear && ./netportcontrol.sh
+        fi
     elif [[ $statusOption == 2 || $statusOption == 02 ]];
     then
         echo ""
         sudo ufw status numbered
+        read -s -p $'\e[1;36m Press <Enter> to return or Ctrl + c to exit\e[1m' finalOption
+        if [[ $finalOption = 'exit' || $finalOption = 'EXIT' || $finalOption = 'Exit' ]];
+        then
+            echo ""
+            exit
+        else
+            sleep 0
+            clear && ./netportcontrol.sh
+        fi
     elif [[ $statusOption == 3 || $statusOption == 03 ]];
     then 
         echo ""
         sudo ufw status verbose
+        read -s -p $'\e[1;36m Press <Enter> to return or Ctrl + c to exit\e[1m' finalOption
+        if [[ $finalOption = 'exit' || $finalOption = 'EXIT' || $finalOption = 'Exit' ]];
+        then
+            echo ""
+            exit
+        else 
+            sleep 0
+            clear && ./netportcontrol.sh
+        fi
+    else
+        echo ""
+        echo $'\e[1;31m   [*] Invalid option!\e[1m'
+        sleep 1 
+        clear && ./netportcontrol.sh        
     fi  
 elif [[ $option == 4 || $option == 04 ]];
 then 
@@ -67,12 +104,34 @@ then
     if [[ $confirm = Y || $confirm = y ]];
     then
         sudo ufw enable
+        echo ""
+        read -s -p $'\e[1;36m Press <Enter> to return or Ctrl + c to exit\e[1m' finalOption
+        if [[ $finalOption = 'exit' || $finalOption = 'EXIT' || $finalOption = 'Exit' ]];
+        then
+            echo ""
+            exit
+        else 
+             sleep 0
+             clear && ./netportcontrol.sh
+        fi
     elif  [[ $confirm = n || $confirm = N ]];
     then    
         echo ""
-        echo $'\e[1;33mExiting ...\e[1m'
-        exit
-    fi  
+        read -s -p $'\e[1;36m Press <Enter> to return or Ctrl + c to exit\e[1m' finalOption
+        if [[ $finalOption = 'exit' || $finalOption = 'EXIT' || $finalOption = 'Exit' ]];
+        then   
+            echo ""
+            exit
+        else 
+             sleep 0
+             clear && ./netportcontrol.sh
+        fi       
+    else
+        echo ""
+        echo $'\e[1;31m   [*] Invalid option!\e[1m'
+        sleep 1 
+        clear && ./netportcontrol.sh      
+    fi      
 elif [[ $option == 5 || $option == 05 ]];
 then 
     echo ""
@@ -80,12 +139,34 @@ then
     if [[ $confirm = Y || $confirm = y ]];
     then 
         sudo ufw disable
+        echo ""
+        read -s -p $'\e[1;36m Press <Enter> to return or Ctrl + c to exit\e[1m' finalOption
+        if [[ $finalOption = 'exit' || $finalOption = 'EXIT' || $finalOption = 'Exit' ]];
+        then
+            echo ""
+            exit
+        else 
+             sleep 0
+             clear && ./netportcontrol.sh
+        fi
     elif [[ $confirm = n || $confirm = N ]];
     then
         echo ""
-        echo $'\e[1;33mExiting ...\e[1m'
-        exit
-    fi      
+        read -s -p $'\e[1;36m Press <Enter> to return or Ctrl + c to exit\e[1m' finalOption
+        if [[ $finalOption = 'exit' || $finalOption = 'EXIT' || $finalOption = 'Exit' ]];
+        then   
+            echo ""
+            exit
+        else 
+             sleep 0
+             clear && ./netportcontrol.sh
+        fi
+    else
+        echo ""
+        echo $'\e[1;31m   [*] Invalid option!\e[1m'
+        sleep 1 
+        clear && ./netportcontrol.sh      
+    fi     
 elif [[ $option == 6 || $option == 06 ]];
 then 
     echo ""
@@ -157,9 +238,14 @@ then
         read -p $'\e[1;36m[*]\e[1m \e[1;37mWhich rule you want delete?: \e[1m' ruleOption
         sudo ufw delete $ruleOption    
     fi
-elif [[ $option == 9 || $option == 09 ]];
+elif [[ $option == 9 || $option == 09 || $option = 'exit' || $option = 'EXIT' ]];
 then 
     echo ""
     echo $'\e[1;33mExiting ...\e[1m'
     exit  
-fi  
+else 
+    echo ""
+    echo $'\e[1;31m   [*] Invalid option!\e[1m'
+    sleep 1
+    clear && ./netportcontrol.sh
+fi
