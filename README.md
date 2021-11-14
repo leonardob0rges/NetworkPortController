@@ -10,7 +10,7 @@ The ***Network Port Controller*** is a shellscript that uses Linux Firewall UFW,
 ```
 
 --------------------------------------------------------------------------
-![netportcontrol](https://user-images.githubusercontent.com/76793724/125192868-3fac0100-e220-11eb-8eb1-9410a95a7310.jpg)
+![networkportcontroller](https://user-images.githubusercontent.com/76793724/141666312-2ce6ac6e-3e1f-420a-ac0e-c131139c8abd.jpeg)
 
 --------------------------------------------------------------------------
 
