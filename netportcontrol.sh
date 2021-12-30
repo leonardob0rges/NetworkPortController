@@ -1,5 +1,5 @@
 #!/bin/bash
-# Network Port Controller v1.0 
+# Network Port Controller v1.1 
 # GitHub: https://github.com/leonardob0rges
 
 printf "\e[1;36m _   _      _   ____            _      ____            _             _  \e[0m\n"
@@ -209,7 +209,7 @@ then
     fi
         if [[ $confirm = Y || $confirm = y ]];
         then
-            sudo apt-get install ufw
+            sudo apt-get install ufw -y
         elif [[ $confirm = n || $confirm = N ]];
         then
             echo ""
@@ -222,7 +222,7 @@ then
         read -p $'\e[1;36mDo you want uninstall UFW ? [Y/n]:\e[1m ' confirm
         if [[ $confirm = Y || $confirm = y ]];
         then
-            sudo apt-get remove --purge ufw
+            sudo apt-get remove --purge ufw -y
         elif [[ $confirm = n || $confirm = N ]];
         then
             echo ""
@@ -242,7 +242,7 @@ elif [[ $option == 9 || $option == 09 || $option = 'exit' || $option = 'EXIT' ]]
 then 
     echo ""
     echo $'\e[1;33mExiting ...\e[1m'
-    exit  
+    exit 
 else 
     echo ""
     echo $'\e[1;31m   [*] Invalid option!\e[1m'
