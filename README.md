@@ -21,7 +21,7 @@ First if you don't have UFW installed, in shell run this:
 sudo apt-get install ufw
 ```
 
-Now clone this repositorie with:
+Now clone this repository with:
 
 ```
 git clone https://github.com/leonardob0rges/NetworkPortController
